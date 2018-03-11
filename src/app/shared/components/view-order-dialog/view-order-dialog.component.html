@@ -1,0 +1,34 @@
+
+<div class="container">
+    <h2>Orders</h2>
+    <div class="table-responsive">           
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>product name</th>
+          <th>Image</th>
+          <th>customer email</th>
+          <th>customer phone</th>
+          <th>Billing Address </th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of OrderedItem;let i=index">
+
+               <td>{{product.price}}</td>
+               <td>{{product.quantity}}</td>
+               <td>{{product._embedded.product.name}}</td>
+               <td><img  src="assets/images/{{product._embedded.product.imageUrl}}" 
+                onError="src='assets/images/red-cable.jpg';"
+                 class="thumb"></td>
+                 <td>{{product._embedded.order.customer.email}}</td>
+                 <td>{{product._embedded.order.customer.phone}}</td>
+                 <td>{{product._embedded.order.billingAddress.addressLine1}}</td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,61 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+ <form  [formGroup]="rForm" (ngSubmit)="AddUser(rForm.value)" >
+  
+<div class="example-container">
+  <mat-form-field hintLabel="unique">
+    <input matInput #input maxlength="15" placeholder="username" formControlName="username"/>
+    <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+  </mat-form-field>
+  <div class="alert alert-danger"  *ngIf="rForm.get('username').touched && rForm.get('username').invalid">
+  <div *ngIf="rForm.get('username').errors.required">username can not be null </div>
+  <div *ngIf="rForm.get('username').errors.userExists">{{input.value}} it is already existing </div>
+  </div>
+<br/>
+<mat-form-field>
+    <input matInput formControlName="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+  <div class="alert alert-danger" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
+  <div *ngIf="rForm.controls['password'].errors.minlength">password should contain atleast 4 characters </div>
+  <div *ngIf="rForm.controls['password'].errors.required">passwords is required </div>
+  </div>
+<br/>
+  <mat-form-field hintLabel="Max 10 characters">
+    <input matInput #input maxlength="10" placeholder="firstname" formControlName="firstname"/>
+    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+ <div class="alert alert-danger" *ngIf="!rForm.controls['firstname'].valid && rForm.controls['firstname'].touched">
+    <div *ngIf="rForm.controls['firstname'].errors.required">firstname is required </div>
+ </div> 
+<br/>
+
+<mat-form-field hintLabel="Max 10 characters">
+    <input matInput #input maxlength="10" placeholder="lastname" formControlName="lastname"/>
+    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+ <div class="alert alert-danger" *ngIf="!rForm.controls['lastname'].valid && rForm.controls['lastname'].touched">
+    <div *ngIf="rForm.controls['lastname'].errors.required">lastname is required </div>
+ </div> 
+<br/>
+<mat-form-field hintLabel="Max 30 characters">
+ <input matInput #input maxlength="30" placeholder="Email" formControlName="email"/>
+ <mat-hint align="end">{{input.value?.length || 0}}/30</mat-hint>
+</mat-form-field>
+<div class="alert alert-danger" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
+   <div *ngIf="rForm.controls['email'].errors.minlength">minimum should be 8   </div>
+   <div *ngIf="rForm.controls['email'].errors.required">email is required </div>
+   
+  </div>
+<br/> 
+
+ <!-- <mat-checkbox class="mat-checkbox-layout " formControlName="enabled">Enabled
+ </mat-checkbox>
+ <br/> -->
+ 
+  
+</div>
+<br/>
+<button  type="submit" class="btn btn-primary btsave" >save</button>
+
+<div *ngIf="submitted" color="warn" class="alert-info">Registered successfully</div>
+</form>

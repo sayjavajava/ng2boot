@@ -1,0 +1,65 @@
+<div class="column">
+  <!-- <div class="sticky-top"> -->
+    <div class="setting">
+      <div class="list-group">
+        <span class="cat"> Category</span>
+        <a routerLink="/productcatalog" class="list-group-item list-group-item-action" [class.active]="!category">
+          All Categories
+
+    </a>
+
+        <a *ngFor="let c of categories" routerLink="/productcatalog" [queryParams]="{category: c.name}" class="list-group-item list-group-item-action"
+          [class.active]="category === c.name">
+          {{c.name}}
+        </a>
+      </div>
+    </div>
+  <!-- </div> -->
+  
+    <div fxLayout="row" fxFlex.mat="70" fxLayoutWrap class="card-deck-container mat-elevation-z4">
+
+      <div fxFlex *ngFor="let product of filteredPoducts" class="card-item">
+        <!-- <app-card [ngStyle]="{'width':'300' + 'px'}" [product]="product"></app-card> -->
+
+        <mat-card [ngStyle]="{'width':'300' + 'px'}">
+          <mat-card-header>
+            <mat-card-title class="mat-card-title">{{product.name}}</mat-card-title>
+          </mat-card-header>
+
+          <img mat-card-image src="assets/images/{{product.image_url}}" 
+          onError="src='assets/images/red-cable.jpg';"
+          alt={{product.name}} class="img-responsive">
+            
+          <mat-card-content>
+            <div class="card-text-content">
+              {{product.description}}
+            </div>
+            <div class="card-text-content">
+              {{product.price}}
+            </div>
+            <div class="card-text-content">
+              {{product.quantity}}
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button  (click)="addProductToCart(product)"> Add To Bag</button>
+            <button mat-raised-button color="warn" (click)="openDialog()">DETAIL</button>
+             
+          </mat-card-actions>
+          <!-- <mat-card-footer>test<button type="button" class="btn btn-primary" (click)="addProductToCart(product)"></button></mat-card-footer> -->
+        </mat-card>
+
+      </div>
+
+      <!-- <div class="paginator mat-elevation-z4" *ngIf="productsDisplayed.length !== 0">
+     <mat-paginator
+       [length]="paginatorSize"
+       [pageSize]="numberOfProductsDisplayedInPage"
+       [pageSizeOptions]="[12, 24]"     
+       (page)="updateProductsDisplayedInPage($event)">
+     </mat-paginator> 
+   </div> -->
+
+    </div>
+  </div>

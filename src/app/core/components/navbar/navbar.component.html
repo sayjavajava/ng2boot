@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+
+  <button mat-button routerLink="home">
+      <mat-icon>home</mat-icon> 
+          </button>
+          
+ <a routerLink="cart"> <span class="badge badge-warning badge-pill carticon"><mat-icon>shopping_cart</mat-icon>{{ cartitem?.length || '0' }}</span></a>
+      <!-- This fills the remaining space of the current row -->
+      <span class="fill-remaining-space"></span>
+      <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+        
+          <button *ngIf="authservice.isLoggedIn()"  mat-button routerLink="ShowProducts">Manage Products</button>
+          <button *ngIf="authservice.isLoggedIn()" mat-button routerLink="productadd"> CreateProducts</button>
+          <!-- <button mat-button routerLink="login">Login</button> -->
+          <button *ngIf="authservice.isLoggedIn()" mat-button routerLink="user">User</button>
+          <button mat-button routerLink="signup">signup</button>
+          <button mat-button routerLink="productcatalog">Products</button>
+          <!-- <button mat-button routerLink="cart">Cart</button> -->
+          <button *ngIf="authservice.isLoggedIn()" mat-button routerLink="orders">Orders</button>
+          <button *ngIf="authservice.isLoggedIn()" mat-button routerLink="profile">Profile</button>
+          <button mat-button (click)="Login()">Sigin</button>
+                
+          
+        </div>
+      <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+       <mat-icon>menu</mat-icon>
+      </button>
+  
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+      <button mat-menu-item routerLink="productadd">Create Products</button>
+      <button mat-menu-item routerLink="login">Login</button>
+      <button mat-menu-item routerLink="user">user</button>
+      <button mat-button routerLink="ShowProducts"> Products</button>
+      
+      <!--<button mat-menu-item>Help</button>-->
+  </mat-menu>

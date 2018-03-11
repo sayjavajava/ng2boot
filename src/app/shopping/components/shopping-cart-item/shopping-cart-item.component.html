@@ -1,0 +1,92 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body">
+     <ul>
+       <li *ngFor="let item of cartitem"  class="cart-item">
+         <span class="cart-item__name">{{item.name}}</span>
+         <span class="cart-item__price">{{item.price}}</span>
+         <span >{{item.quantity}}</span>
+         <span >{{item.imageUrl}}</span>
+
+        </li>
+     </ul>
+    <div class="cart__total">Total:{{totalprice}} </div>
+  </div>
+</div> -->
+
+<div class="container">
+<h1>Shopping Cart</h1>
+<div class="row col-10" *ngIf="cartitem.length > 0">
+  <p>
+    You have {{cartitem.length }} items in your shopping cart. 
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-center" style="width: 230px">Quantity</th>
+        <th class="text-right" style="width: 200px">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartitem">
+        <td>
+          <!-- <div [style.backgroundImage]="'url(' + item.imageUrl + ')'" class="thumbnail">
+          </div> -->
+          <img mat-card-image src="assets/images/{{item.image_url}}" 
+          onError="src='assets/images/red-cable.jpg';"
+           class="thumbnail">
+        </td>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>
+          <!-- <product-quantity [product]="item" [shopping-cart]="cart">
+          </product-quantity> -->
+          <!-- <i class="fa fa-minus" aria-hidden="true"></i> -->
+      <button (click)="DecreaseQuantity(item)" *ngIf="item.cartquantity > 0">
+         
+        <!-- <span class="glyphicon glyphicon-plus plus"></span> -->
+        <!-- <i class="material-icons">indeterminate_check_box</i> -->
+        <i class="fa fa-minus" aria-hidden="true"></i>      
+      </button >      {{item.cartquantity}}
+
+      <button (click)="IncreaseQuantity(item)" >
+        
+       <!-- <span class="glyphicon glyphicon-plus plus"></span> -->
+       <i class="fa fa-plus" aria-hidden="true"></i>
+       
+     </button >
+      </td>
+      <td class="text-right">
+          {{ item.cartprice | currency:'USD':true }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{ totalPrice | currency:'PKR':true }}</th>
+      </tr>
+    </tfoot> 
+  </table>
+
+  <a 
+  routerLink="/checkout"
+  class="btn btn-light ">Checkout</a>
+
+  <button 
+    (click)="clearCart()"
+    class="btn btn-danger btn-sm">Clear Shopping Cart</button>
+   
+    <div  class="d-flex total" *ngIf="totalprice > 0"
+          >
+            Total Price: {{totalprice}} </div>
+</div>
+</div>

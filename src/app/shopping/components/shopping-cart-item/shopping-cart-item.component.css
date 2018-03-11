@@ -1,0 +1,22 @@
+
+.thumbnail { 
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+.total{
+  align-self: end;
+  margin-right: 0px;
+  margin-left: 55%;
+  color: red;
+  font: cursive;
+  font-style: italic;
+}
+
+.plus{
+  width: 100px;
+  color: red;
+  margin: 40px auto
+}

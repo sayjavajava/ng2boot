@@ -1,0 +1,35 @@
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <form  [formGroup]="rForm" (ngSubmit)="login(rForm.value)">
+    <!-- <p class="h5 text-center mb-4">Login</p> -->
+    <i style="font-size:88px;"class="fa fa-user-circle-o center" aria-hidden="true"></i>
+    <div class="mat-form">
+      <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" formControlName="name" class="form-control" required>
+        
+    </div>
+<br/>
+    <div class="mat-form">
+      <i class="fa fa-lock prefix"></i>
+         <input type="password" formControlName="password" class="form-control" required>
+        
+        
+    </div>
+<br/>
+<br/>
+    <div class="text-center">
+        <button mat-raised-button color="primary" [disabled]="!rForm.valid" >Login <i class="fa fa-paper-plane-o ml-1" ></i></button>
+        <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+    </div>
+  </form><br/>
+    <!-- <p style="color:coral" *ngIf="value?.name">
+      {{value[0]}} you have already Logged In 
+     <button mat-button (click)="logout()" >LogOut</button>
+      </p> -->
+      <div style="color:coral" class="well" *ngIf="(currentuser$ | async)?.length>0">
+      <span *ngFor="let user of currentuser$ | async  ;let i = index; ">{{user}} you have already Logged In </span>
+      <button mat-button (click)="logout()" >LogOut</button>  
+      </div>
+      
+    <div *ngIf="invalid" class="alert alert-danger">invalid username or password </div>

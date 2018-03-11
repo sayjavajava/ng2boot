@@ -1,0 +1,55 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="example-container mat-elevation-z8"><mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <mat-cell *matCellDef="let products"> {{products.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let products"> {{products.price}} </mat-cell>
+  </ng-container> data.items[1].name
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let products"> {{products.description}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="instock">
+    <mat-header-cell *matHeaderCellDef> instock </mat-header-cell>
+    <mat-cell *matCellDef="let products"> {{products.inStock}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+    <mat-cell *matCellDef="let products"> {{products.category.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Edit">
+    <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+    <mat-cell *matCellDef="let products">
+      <button type="button" class="btn btn-success" (click)="editUserPage(products)">Edit</button>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Delete">
+    <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+    <mat-cell *matCellDef="let products">
+      <button mat-icon-button (click)="openConfirmationDialog(products)">
+
+        <mat-icon>delete </mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+          <mat-cell *matCellDef="let products"> {{products._links.category.href}} </mat-cell>
+        </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="pageEvent = getServerData($event)">
+
+</mat-paginator>
+</div>

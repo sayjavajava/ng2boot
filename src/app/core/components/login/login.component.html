@@ -1,0 +1,48 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div *ngIf="isAuthenticated()">
+  <button (click)="logout()" class="btn btn-primary pull-right btn-sm RbtnMargin">LogOut</button>
+</div>
+
+
+
+<div class="container">
+
+  <form [formGroup]="rForm" (ngSubmit)="login(rForm.value)">
+    <div class="form-container">
+      <h1>SignIn</h1>
+
+      <div class="form-group required">
+
+        <label class="col-md-2 control-label">Username</label>
+        <input formControlName="name" class="form-control" />
+        <span class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched"> name between 4 and 20 char</span>
+        
+      </div>
+      
+      <br/>
+
+      <div class="form-group required">
+
+        <label class="col-md-2 control-label">password</label>
+
+
+        <input type="password" formControlName="password" class="form-control" />
+        <span class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">required</span>
+      </div>
+
+      <br/>
+
+
+      <div>
+        <mat-checkbox>Remember me </mat-checkbox>
+      </div>
+      <br/>
+
+      <input type="submit" class="btn btn-primary" value="Submit Form" [disabled]="!rForm.valid">
+
+      <div *ngIf="invalid" class="alert alert-danger">invalid username or password </div>
+
+    </div>
+
+  </form>
+</div>

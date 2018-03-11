@@ -1,0 +1,22 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .mat-header-cell.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .mat-dialog-container{
+    border-radius: 20px;
+  }
+  mat-icon{
+    color: red;font-size: 2.5em;
+}

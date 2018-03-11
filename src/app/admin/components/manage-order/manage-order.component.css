@@ -1,0 +1,12 @@
+.panel{
+    width: 100%;
+    margin-bottom: 75px;
+    border: 2px solid,red;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.btclose{
+    float: right;
+    margin-right: 30px;
+}

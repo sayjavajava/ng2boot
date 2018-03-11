@@ -1,0 +1,87 @@
+
+<div class="d-flex flex-nowrap flex-row">
+<div class="p-2 order-1 col-md-6">
+<form  [formGroup]="rForm" (ngSubmit)="PalaceOrder(rForm.value)" >
+ 
+<div class="example-container">
+ <mat-form-field hintLabel="unique">
+   <input matInput #input maxlength="15" placeholder="name" formControlName="username"/>
+   <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+ </mat-form-field>
+ <div class="alert alert-danger"  *ngIf="rForm.get('username').touched && rForm.get('username').invalid">
+ <div *ngIf="rForm.get('username').errors.required">username can not be null </div>
+ </div>
+<br/>
+<mat-form-field hintLabel="city">
+  <input matInput #input maxlength="15" placeholder="city" formControlName="city"/>
+  <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+</mat-form-field>
+<div class="alert alert-danger"  *ngIf="rForm.get('city').touched && rForm.get('city').invalid">
+<div *ngIf="rForm.get('city').errors.required">city can not be null </div>
+</div>
+
+<br/>
+ <mat-form-field hintLabel="Max 40 characters">
+   <input type="textarea" matInput #input maxlength="40" placeholder="address" formControlName="address"/>
+   <mat-hint align="end">{{input.value?.length || 0}}/40</mat-hint>
+ </mat-form-field>
+<div class="alert alert-danger" *ngIf="!rForm.controls['address'].valid && rForm.controls['address'].touched">
+   <div *ngIf="rForm.controls['address'].errors.required">Address is required </div>
+</div> 
+<br/>
+
+<mat-form-field hintLabel="Max 10 characters">
+   <input matInput #input maxlength="11" minlength="10 " placeholder="Phone" formControlName="phone"/>
+   <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
+ </mat-form-field>
+<div class="alert alert-danger" *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched">
+   <div *ngIf="rForm.controls['phone'].errors.required">phone is required </div>
+</div> 
+
+<br/> 
+
+</div>
+<br/>
+<button  type="submit" class="btn btn-primary btsave" >Palace Order</button>
+
+<div *ngIf="submitted" color="warn" class="alert-info">Registered successfully</div>
+</form>
+</div>
+<div class = "p-2 order-2 align-items-end setbox">
+  <!-- <div *ngFor="let product of productcart">  
+ Product name : {{product.name}}
+<br/>
+Total Item Price : {{product.cartquantity}} * {{product.price}}  = {{product.cartprice}}
+<br/>
+Total Bill:{{totalprice}}
+</div> -->
+
+<table class="table table-striped" *ngIf="productcart.length > 0" >
+    <thead>
+      <tr>
+
+        <th scope="col">Product Name</th>
+        <th scope="col">Item Price</th>
+        <th scope="col">Item Quantity</th>
+        <th scope="col">Calculation Per Item</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productcart">
+       
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.cartquantity}}</td>
+       
+
+        <td>{{product.cartquantity}} * {{product.price}}  = {{product.cartprice}}</td>
+        
+      </tr>
+
+    </tbody>
+  </table>
+  <span class="total" *ngIf="productcart.length > 0">Total Price:  {{totalprice}} </span>
+</div>
+
+</div>

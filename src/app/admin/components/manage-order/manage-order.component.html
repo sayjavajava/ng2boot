@@ -1,0 +1,75 @@
+<div *ngIf="openpanel" class="panel">
+   
+<table class="table table-bordered">
+  <p>working on this part </p>
+  <thead>
+    <th>Order#</th>
+    <th>Price</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of filteredarray">
+      <td> {{item.orderNumber}} </td>
+      <td> {{item.payment.totalprice}} </td>
+<td>
+        {{item.status}}
+       </td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-light btn-link btclose" (click)="closediv()">close</button>
+</div>
+
+
+
+
+<div>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="orderNumber">
+      <mat-header-cell *matHeaderCellDef> orderNumber </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.orderNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Order Price">
+      <mat-header-cell *matHeaderCellDef> Order Price </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.payment.amount}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="Status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.status}} </mat-cell>
+    </ng-container>createdOn
+ 
+    <ng-container matColumnDef="createdOn">
+      <mat-header-cell *matHeaderCellDef> createdOn </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.createdOn | date:'yyyy-MM-dd'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="View Detail">
+        <mat-header-cell *matHeaderCellDef> View Detail</mat-header-cell>
+        <mat-cell *matCellDef="let users"> <button type="button" class="btn btn-success" (click)="ViewDetail(users)">View Detail</button> </mat-cell>
+      </ng-container>
+
+    <!-- <ng-container matColumnDef="Delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let users"> <button mat-icon-button  (click)="delete(users)"><mat-icon>delete </mat-icon></button> </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="Edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let users"> <button mat-icon-button  (click)="ChangeStatus(users)"><mat-icon>edit </mat-icon></button> </mat-cell>
+    </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </mat-table>
+ 
+  <mat-paginator   #paginator 
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="pageEvent = $event">>
+
+ </mat-paginator>
+</div>

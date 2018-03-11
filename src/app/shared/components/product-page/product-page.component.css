@@ -1,0 +1,44 @@
+.example-card {
+    width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+
+
+  .card-deck-container {
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    border-radius: 2px;
+    padding: 10px 10px 30px;
+    margin: -380px 10px 10px auto;
+    background-color: #f5f5f5;
+  }
+  
+  .card-item {
+    padding: 3px 3px 3px 3px;
+  }
+
+.nav{
+  margin-right: auto;
+}
+.setting{
+  align-items: right;
+  width: 205px;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.cat{
+  font-size: 20px;
+  padding-left: 19px;
+  font-family: fantasy;
+}
+.sticky-top{
+  top:80px;
+}

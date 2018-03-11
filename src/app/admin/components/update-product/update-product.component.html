@@ -1,0 +1,168 @@
+<!-- <div layout="row">
+  <div flex>First item in row</div>
+  <div flex>Second item in row
+  <form [formGroup]="rForm" (ngSubmit)="UpdaetProduct(rForm.value)">
+
+     class="example-container container" 
+    <div>
+      <mat-form-field hintLabel="Max 15 characters">
+        <input matInput #input maxlength="15" placeholder="Product Name" formControlName="name" />
+        <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+        <div *ngIf="rForm.controls['name'].errors.minlength">name should contain atleast 4 characters </div>
+        <div *ngIf="rForm.controls['name'].errors.required">Name is required </div>
+
+      </div>
+
+
+      <br/>
+      <mat-form-field>
+        <mat-select formControlName="selectedCategory" placeholder="Select category">
+          <mat-option *ngFor="let category of item" [value]="category.name">{{category.name}} </mat-option>
+        </mat-select>
+        <mat-hint align="end">Tech items</mat-hint>
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="!rForm.controls['selectedCategory'].valid && rForm.controls['selectedCategory'].touched">select category</div>
+
+      <br/>
+
+      <mat-form-field hintLabel="Max 15 characters">
+        <input type="number" matInput #input maxlength="10" placeholder="Price" formControlName="price" />
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched">
+        <div *ngIf="rForm.controls['price'].errors.minlength">Can not less than 10 </div>
+        <div *ngIf="rForm.controls['price'].errors.required">Price is required </div>
+
+
+      </div>
+      <br/>
+
+      <mat-checkbox class="mat-checkbox-layout " formControlName="InStock"> in stock
+      </mat-checkbox>
+      <br/>
+
+      <mat-form-field>
+        <mat-select formControlName="quantity" placeholder="Select quantity">
+          <mat-option *ngFor="let quantity of quantity" [value]="quantity">{{quantity}} </mat-option>
+        </mat-select>
+        <mat-hint align="end">Tech items</mat-hint>
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="!rForm.controls['quantity'].valid && rForm.controls['quantity'].touched">select Quantity</div>
+
+      <br/>
+      <button type="submit" class="btn btn-primary btsave">save</button>
+
+    </div>
+
+  </form>
+</div>
+
+<div flex> another </div>
+</div> -->
+
+
+
+<div class="flex-container" 
+fxLayout="row" 
+fxLayout.xs="column"
+fxLayoutAlign="center center"
+fxLayoutAlign.xs="start">
+ <div class="flex-item" fxFlex="50%" fxFlex.xs="65%"> 
+<form [formGroup]="rForm" (ngSubmit)="UpdaetProduct(rForm.value)">
+     
+      <div  class="example-container container" >
+        <mat-form-field>
+          <input matInput #input maxlength="15" placeholder="Product Name" formControlName="name" />
+          <mat-hint align="end">{{input.value?.length || 0}}/15</mat-hint>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+          <div *ngIf="rForm.controls['name'].errors.minlength">name should contain atleast 4 characters </div>
+          <div *ngIf="rForm.controls['name'].errors.required">Name is required </div>
+  
+        </div>
+  
+        <br/>
+        
+        <mat-form-field>
+          <mat-select formControlName="selectedCategory" placeholder="Select category">
+            <mat-option *ngFor="let category of item" [value]="category.name">{{category.name}} </mat-option>
+          </mat-select>
+          <mat-hint align="end">Tech items</mat-hint>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['selectedCategory'].valid && rForm.controls['selectedCategory'].touched">select category</div>
+  
+        <br/>
+  
+        <mat-form-field>
+          <input type="number" matInput #input maxlength="10" placeholder="Price" formControlName="price" />
+          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched">
+          <div *ngIf="rForm.controls['price'].errors.minlength">Can not less than 10 </div>
+          <div *ngIf="rForm.controls['price'].errors.required">Price is required </div>
+  
+        </div>
+        <br/>
+        <br/>
+        <mat-form-field>
+            <input matInput #input  placeholder="Product Image Url" formControlName="image_url"/>
+            
+          </mat-form-field>
+          <div class="alert alert-danger" *ngIf="!rForm.controls['image_url'].valid && rForm.controls['image_url'].touched">
+         Image Url Required  
+         </div>
+  
+
+        <br/>
+         <mat-checkbox class="mat-checkbox-layout " formControlName="InStock"> in stock
+        </mat-checkbox>
+        <br/>
+        <!-- <mat-form-field>
+            <input placeholder="Image Url" formControlName="image_url" />
+            
+      </mat-form-field>
+          <div class="alert alert-danger" *ngIf="!rForm.controls['image_url'].valid && rForm.controls['image_url'].touched">
+            <div *ngIf="rForm.controls['image_url'].errors.minlength">name should contain atleast 4 characters </div>
+            <div *ngIf="rForm.controls['image_url'].errors.required">Name is required </div>
+    
+          </div> -->
+        <br/>
+        <mat-form-field>
+          <mat-select formControlName="quantity" placeholder="Select quantity">
+            <mat-option *ngFor="let quantity of quantity" [value]="quantity">{{quantity}} </mat-option>
+          </mat-select>
+          <mat-hint align="end">Tech items</mat-hint>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="!rForm.controls['quantity'].valid && rForm.controls['quantity'].touched">select Quantity</div>
+        
+        <br/>
+        <br/>
+        <button mat-raised-button  class="btsave" type="submit" color="primary">save</button>
+        <button mat-raised-button  class="btsave" mat-dialog-close="yes"  color="warn" > Cancel</button>
+        
+      </div>
+  
+    </form>
+  </div> 
+
+<div class="flex-item" fxFlex>   
+    <mat-card *ngFor="let p of product" class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{p.name}}</mat-card-title>
+          <mat-card-subtitle>{{p.price}}</mat-card-subtitle>
+        </mat-card-header>
+      
+        <img mat-card-image src="assets/images/{{p.image_url}}" alt={{p.name}} class="img-responsive">
+        <mat-card-content>
+           {{p.description}}
+
+        </mat-card-content>
+
+      </mat-card>
+        
+</div>
+<!-- <div class="flex-item" fxFlex="25px"> four </div> -->
+</div>

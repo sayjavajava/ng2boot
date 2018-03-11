@@ -1,0 +1,60 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <div [class.loader-hidden]="!show">
+      <div class="loader-overlay">
+              <div>
+                  <mat-progress-bar color="accent" mode="indeterminate" *ngIf="show"></mat-progress-bar>
+              </div>
+      </div>
+  </div>
+
+<div>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let users"> {{users.username}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let users"> {{users.email}} </mat-cell>
+    </ng-container> 
+      <ng-container matColumnDef="Authorities">
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell *matCellDef="let users"> {{users.authorities[0].name}} </mat-cell>
+    </ng-container>  
+    <ng-container matColumnDef="Active">
+      <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+      <mat-cell *matCellDef="let users"> {{users.enabled}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let users"> <button type="button" class="btn btn-success" (click)="editUserPage(users)">Edit</button> </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let users"> <button mat-icon-button  (click)="delete(users)"><mat-icon>delete </mat-icon></button> </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let users"> {{users._links.category.href}} </mat-cell>
+      </ng-container> -->
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </mat-table>
+ 
+  <mat-paginator   #paginator 
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="pageEvent = $event">>
+
+ </mat-paginator>
+</div>
